@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ReservationHelperService WSDL service -->
+
+  <service name="ReservationHelper" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://helperClasses"/>
+      <parameter name="wsdlServiceElement" value="ReservationHelperService"/>
+      <parameter name="schemaQualified" value="http://helperClasses,http://beanFiles"/>
+      <parameter name="wsdlServicePort" value="ReservationHelper"/>
+      <parameter name="className" value="helperClasses.ReservationHelper"/>
+      <parameter name="wsdlPortType" value="ReservationHelper"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://helperClasses" xmlns:retNS="http://helperClasses" xmlns:rtns="http://beanFiles" name="loadReservationsForFlight" qname="operNS:loadReservationsForFlight" returnQName="retNS:loadReservationsForFlightReturn" returnType="rtns:ActiveReservationsBean" soapAction="">
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:flightId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://helperClasses" xmlns:retNS="http://helperClasses" xmlns:rtns="http://beanFiles" name="cancelReservationDtl" qname="operNS:cancelReservationDtl" returnQName="retNS:cancelReservationDtlReturn" returnType="rtns:ActiveReservationsBean" soapAction="">
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:customerId" type="tns:int"/>
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:reservationDtlId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://helperClasses" xmlns:retNS="http://helperClasses" xmlns:rtns="http://beanFiles" name="createNewReservations" qname="operNS:createNewReservations" returnQName="retNS:createNewReservationsReturn" returnType="rtns:ReservationBean" soapAction="">
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://beanFiles" qname="pns:reservation" type="tns:ReservationBean"/>
+      </operation>
+      <operation xmlns:operNS="http://helperClasses" xmlns:retNS="http://helperClasses" xmlns:rtns="http://beanFiles" name="loadReservationsForCustomer" qname="operNS:loadReservationsForCustomer" returnQName="retNS:loadReservationsForCustomerReturn" returnType="rtns:ActiveReservationsBean" soapAction="">
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:customerId" type="tns:int"/>
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:status" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://helperClasses" xmlns:retNS="http://helperClasses" xmlns:rtns="http://beanFiles" name="cancelReservation" qname="operNS:cancelReservation" returnQName="retNS:cancelReservationReturn" returnType="rtns:ActiveReservationsBean" soapAction="">
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:customerId" type="tns:int"/>
+        <parameter xmlns:pns="http://helperClasses" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:reservationId" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="cancelReservationDtl createNewReservations loadReservationsForCustomer loadReservationsForFlight cancelReservation"/>
+
+      <typeMapping xmlns:ns="http://beanFiles" qname="ns:PersonBean" type="java:beanFiles.PersonBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://beanFiles" qname="ns:ReservationDetailBean" type="java:beanFiles.ReservationDetailBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://beanFiles" qname="ns:ReservationBean" type="java:beanFiles.ReservationBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://helperClasses" xmlns:cmp-ns="http://beanFiles" qname="ns:ArrayOf_tns1_ReservationDetailBean" type="java:beanFiles.ReservationDetailBean[]" innerType="cmp-ns:ReservationDetailBean" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://beanFiles" qname="ns:ActiveReservationsBean" type="java:beanFiles.ActiveReservationsBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

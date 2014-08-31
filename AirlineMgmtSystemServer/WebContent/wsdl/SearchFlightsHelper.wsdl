@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://helperClasses" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://helperClasses" xmlns:intf="http://helperClasses" xmlns:tns1="http://fdpackage" xmlns:tns2="http://beanFiles" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://helperClasses" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beanFiles"/>
+   <import namespace="http://fdpackage"/>
+   <element name="getFlightlist">
+    <complexType/>
+   </element>
+   <element name="getFlightlistResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFlightlistReturn" type="tns1:FlightListBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchFlightByBookingId">
+    <complexType>
+     <sequence>
+      <element name="flightdetails" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchFlightByBookingIdResponse">
+    <complexType>
+     <sequence>
+      <element name="searchFlightByBookingIdReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlight">
+    <complexType>
+     <sequence>
+      <element name="flight" type="tns1:FlightListBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="updateFlightReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlightInfo">
+    <complexType>
+     <sequence>
+      <element name="flbean" type="tns1:FlightListBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlightInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getFlightInfoReturn" type="tns1:FlightListBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCustomerByBookingIdRef">
+    <complexType>
+     <sequence>
+      <element name="cust" type="tns1:CustomerBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCustomerByBookingIdRefResponse">
+    <complexType>
+     <sequence>
+      <element name="searchCustomerByBookingIdRefReturn" type="tns1:CustomerBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchReturnFlight">
+    <complexType>
+     <sequence>
+      <element name="flightdetails" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchReturnFlightResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchReturnFlightReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCancelledFlights">
+    <complexType>
+     <sequence>
+      <element name="date" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchCancelledFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchCancelledFlightsReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchOneWayFlight">
+    <complexType>
+     <sequence>
+      <element name="flightdetails" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchOneWayFlightResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchOneWayFlightReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loadReservationsForFlight">
+    <complexType>
+     <sequence>
+      <element name="flightId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loadReservationsForFlightResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="loadReservationsForFlightReturn" type="tns2:ActiveReservationsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://fdpackage" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beanFiles"/>
+   <complexType name="FlightListBean">
+    <sequence>
+     <element name="airline_Name" nillable="true" type="xsd:string"/>
+     <element name="crew_Count" type="xsd:int"/>
+     <element name="depart_date" nillable="true" type="xsd:string"/>
+     <element name="flight_Arr_Time" nillable="true" type="xsd:string"/>
+     <element name="flight_Depart_Time" nillable="true" type="xsd:string"/>
+     <element name="flight_Destination" nillable="true" type="xsd:string"/>
+     <element name="flight_Number" nillable="true" type="xsd:string"/>
+     <element name="flight_Source" nillable="true" type="xsd:string"/>
+     <element name="flight_fare" type="xsd:float"/>
+     <element name="flight_id" type="xsd:int"/>
+     <element name="no_of_seats" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="FlightDetailsBean">
+    <sequence>
+     <element name="airlinename" nillable="true" type="xsd:string"/>
+     <element name="arrival" nillable="true" type="xsd:string"/>
+     <element name="date_of_journey" nillable="true" type="xsd:string"/>
+     <element name="date_of_return" nillable="true" type="xsd:string"/>
+     <element name="departure" nillable="true" type="xsd:string"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="fare" type="xsd:double"/>
+     <element name="flightId" type="xsd:int"/>
+     <element name="flightnumber" nillable="true" type="xsd:string"/>
+     <element name="source" nillable="true" type="xsd:string"/>
+     <element name="travelclass" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerBean">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beanFiles" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://fdpackage"/>
+   <complexType name="ActiveReservationsBean">
+    <sequence>
+     <element name="boardingStatus" nillable="true" type="xsd:string"/>
+     <element name="dateOfJourney" nillable="true" type="xsd:string"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="flightId" type="xsd:int"/>
+     <element name="flightNo" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="price" type="xsd:double"/>
+     <element name="reservationDtlId" type="xsd:int"/>
+     <element name="reservationId" type="xsd:int"/>
+     <element name="source" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="searchCustomerByBookingIdRefRequest">
+
+      <wsdl:part element="impl:searchCustomerByBookingIdRef" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCancelledFlightsResponse">
+
+      <wsdl:part element="impl:searchCancelledFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCancelledFlightsRequest">
+
+      <wsdl:part element="impl:searchCancelledFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightlistRequest">
+
+      <wsdl:part element="impl:getFlightlist" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightRequest">
+
+      <wsdl:part element="impl:updateFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightResponse">
+
+      <wsdl:part element="impl:updateFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightInfoResponse">
+
+      <wsdl:part element="impl:getFlightInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchFlightByBookingIdRequest">
+
+      <wsdl:part element="impl:searchFlightByBookingId" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightInfoRequest">
+
+      <wsdl:part element="impl:getFlightInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchOneWayFlightResponse">
+
+      <wsdl:part element="impl:searchOneWayFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightlistResponse">
+
+      <wsdl:part element="impl:getFlightlistResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchFlightByBookingIdResponse">
+
+      <wsdl:part element="impl:searchFlightByBookingIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchReturnFlightRequest">
+
+      <wsdl:part element="impl:searchReturnFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCustomerByBookingIdRefResponse">
+
+      <wsdl:part element="impl:searchCustomerByBookingIdRefResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForFlightResponse">
+
+      <wsdl:part element="impl:loadReservationsForFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForFlightRequest">
+
+      <wsdl:part element="impl:loadReservationsForFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchReturnFlightResponse">
+
+      <wsdl:part element="impl:searchReturnFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchOneWayFlightRequest">
+
+      <wsdl:part element="impl:searchOneWayFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SearchFlightsHelper">
+
+      <wsdl:operation name="getFlightlist">
+
+         <wsdl:input message="impl:getFlightlistRequest" name="getFlightlistRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFlightlistResponse" name="getFlightlistResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchFlightByBookingId">
+
+         <wsdl:input message="impl:searchFlightByBookingIdRequest" name="searchFlightByBookingIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchFlightByBookingIdResponse" name="searchFlightByBookingIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlight">
+
+         <wsdl:input message="impl:updateFlightRequest" name="updateFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateFlightResponse" name="updateFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlightInfo">
+
+         <wsdl:input message="impl:getFlightInfoRequest" name="getFlightInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFlightInfoResponse" name="getFlightInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCustomerByBookingIdRef">
+
+         <wsdl:input message="impl:searchCustomerByBookingIdRefRequest" name="searchCustomerByBookingIdRefRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchCustomerByBookingIdRefResponse" name="searchCustomerByBookingIdRefResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchReturnFlight">
+
+         <wsdl:input message="impl:searchReturnFlightRequest" name="searchReturnFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchReturnFlightResponse" name="searchReturnFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCancelledFlights">
+
+         <wsdl:input message="impl:searchCancelledFlightsRequest" name="searchCancelledFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchCancelledFlightsResponse" name="searchCancelledFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchOneWayFlight">
+
+         <wsdl:input message="impl:searchOneWayFlightRequest" name="searchOneWayFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchOneWayFlightResponse" name="searchOneWayFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loadReservationsForFlight">
+
+         <wsdl:input message="impl:loadReservationsForFlightRequest" name="loadReservationsForFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loadReservationsForFlightResponse" name="loadReservationsForFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SearchFlightsHelperSoapBinding" type="impl:SearchFlightsHelper">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getFlightlist">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFlightlistRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFlightlistResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchFlightByBookingId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchFlightByBookingIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchFlightByBookingIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlightInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFlightInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFlightInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCustomerByBookingIdRef">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchCustomerByBookingIdRefRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchCustomerByBookingIdRefResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchReturnFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchReturnFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchReturnFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCancelledFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchCancelledFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchCancelledFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchOneWayFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchOneWayFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchOneWayFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loadReservationsForFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loadReservationsForFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loadReservationsForFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SearchFlightsHelperService">
+
+      <wsdl:port binding="impl:SearchFlightsHelperSoapBinding" name="SearchFlightsHelper">
+
+         <wsdlsoap:address location="http://localhost:8080/AirlineMgmtSystemServer/services/SearchFlightsHelper"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

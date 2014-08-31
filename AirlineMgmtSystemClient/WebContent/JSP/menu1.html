@@ -1,0 +1,915 @@
+<html>
+
+<head>
+<title>
+ Javascript Professional Projects
+</title>
+
+
+<style type="text/css">
+
+<!--
+
+a{
+color:#000000;
+text-decoration:none;
+font-size:12;
+font-family: "Garamound";
+}
+
+a:hover{
+color:#9E7BFF;
+font-size:13;
+font-family:"Times New Roman";
+background:#000000;
+border:1px solid #000000;
+width:180px;
+font-weight:800;
+}
+
+a.current{
+margin:0px;
+border-bottom:1px #000000 solid;
+border-top:1px #000000 solid;
+border-left:1px #000000 solid;
+border-right:1px #000000 solid;
+width:180px;
+font-size:13;
+font-family:Garamound;
+font-weight:800;
+}
+
+.menu{
+visibility: hiddden;
+position: absolute;
+background-color:#9E7BFF;
+border-style: solid;
+border-width: 1px;
+font-family: "Times New Roman";
+font-size: 13;
+left: -1000;
+top: -1000;
+width:180px;
+font-weight:800px;
+}
+
+-->
+
+</style>
+
+
+<script language="javascript">
+
+ function changeColor()
+ {
+  var td=document.getElementById("change");
+  td.bgColor="#f0d0f0";
+}
+
+ function restoreColor()
+{
+ var td=document.getElementById("change");
+ td.bgColor="#F0D0D1";
+}
+
+ function openMenuAbsolute(divMenu,xPos,yPos)
+  {
+   hideLevel(divMenu.level);
+   divMenu.style.left=xPos;
+   divMenu.style.top=yPos;
+   divMenu.style.visibility="visible";
+  }
+
+ function openMenuRelative(divMenu,parent,position)
+  {
+   xPos=0;yPos=0;
+    //subtract 4 because of menu's border
+
+   
+    if(position=="BOTTOM")
+    yPos=parent.clientHeight;
+   
+    else if(position=="RIGHT")
+    xPos=parent.clientWidth;
+
+
+   do{
+       if(parent.tagName !="CENTER")
+        {
+	  xPos +=parent.offsetLeft;
+          yPos +=parent.offsetTop;
+
+           if(parent.border !=null)
+	     {
+		xPos -=parent.border*2;
+		yPos -=parent.border*2;
+	      }
+          }
+           parent=parent.parentElement;
+          
+    }while(parent !=null);
+
+   
+      openMenuAbsolute(divMenu,xPos,yPos);
+   }
+
+
+ function hideLevel(level)
+
+  {
+    //Get all the div tags on the document
+    divTags=document.all.tags("div");  
+   
+     for(i=0;i<divTags.length;i++)
+     {
+       if(divTags[i].className== "menu" && divTags[i].level >=level)
+         {
+            //Hide the menu
+	     divTags[i].style.visibility="hidden";
+	     divTags[i].style.left= -1000;
+	     divTags[i].style.top = -1000;
+         }
+      }
+   }
+
+
+
+function changetab()
+{
+document.getElementById("booking").style.visibility="visible";
+document.getElementById("hotel").style.visibility="hidden";
+document.getElementById("changebook").style.backgroundColor="#ccccff"
+document.getElementById("changehotel").style.backgroundColor="#8968CD"
+document.getElementById("changes").style.backgroundColor="#8968CD"
+document.getElementById("cbook").style.color="#000000"
+document.getElementById("chotel").style.color="#ffe4b5"
+}
+
+
+
+function changetab1(){
+document.getElementById("booking").style.visibility="hidden";
+document.getElementById("hotel").style.visibility="visible";
+document.getElementById("changehotel").style.backgroundColor="#ccccff"
+document.getElementById("changebook").style.backgroundColor="#8968CD"
+document.getElementById("changes").style.backgroundColor="#8968CD"
+document.getElementById("chotel").style.color="#000000"
+document.getElementById("cbook").style.color="#ffe4b5"
+
+}
+
+function animate(pic)
+   {
+  
+   var an="a"+pic;
+   document.getElementById(pic).style.visibility="hidden";
+   document.getElementById(an).style.visibility="visible";
+   
+   }
+
+function n_animate(pic)
+   {
+   
+   var an="a"+pic;
+   document.getElementById(pic).style.visibility="visible";
+   document.getElementById(an).style.visibility="hidden";
+    
+   }
+  
+</script>
+
+
+</head>
+
+
+
+<body bgcolor=#E3E4FA onMouseUp= "JavaScript:hideLevel(0);" onResize="JavaScript:hideLevel(0);">
+
+
+<center>
+<img src="top.gif" width=98% align="center">
+
+
+<table  bgcolor="#9E7BFF" bordercolor="#FFFF00" 
+width=98%>
+ <tr>
+
+  <td width="14%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.About_US,this.parentElement,'BOTTOM');">
+   <img src="redtab.gif">&nbsp;About Us
+   </a>
+  </td>
+
+  
+  <td width="15%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Plan_Book,this.parentElement,'BOTTOM');">
+    <img src="redtab.gif">&nbsp;Plan & Book
+   </a>
+  </td>
+
+  <td width="18%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Flight_info,this.parentElement,'BOTTOM');">
+   <img src="redtab.gif">&nbsp;Flight Information
+   </a>
+  </td>
+  
+   <td width="16%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.View,this.parentElement,'BOTTOM');">
+   <img src="redtab.gif">&nbsp;Special Offers
+   </a>
+  </td>
+
+ <td width="17%">
+   <a>
+   <img src="redtab.gif">&nbsp;Product & Services
+   </a>
+  </td>
+  
+  <td width="15%">
+   <a>
+   <img src="redtab.gif">&nbsp;Contact Us
+   </a>
+  </td>
+
+ </tr>
+</table>
+</center>
+
+
+
+<div class="menu" ID="About_US" style="z-index:1" level="0" >
+
+<table   cellspacing=0 cellpadding=0><tr >
+<td>
+  <a class="current" href="chairman.html" onMouseOver="JavaScript:openMenuAbsolute(document.all.File_New,document.all.File.offsetLeft+document.all.File.clientWidth-1,
+document.all.File.offsetTop);">
+
+
+ChairMan's Message
+</a><br>
+</td>
+</tr>
+
+<tr >
+<td>
+<a class="current" href="our_growth.html" onMouseOver="JavaScript:hideLevel(1);">
+Our Growth
+</a><br>
+
+</td>
+</tr>
+
+<tr>
+<td>
+<a class="current" href="awards.html">
+Awards
+</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a class="current" href="JavaScript:void(0);">
+Press Room
+</a>
+</td>
+</tr>
+</table>
+</div>
+
+<div class="menu" ID="Plan_Book" style="z-index:1" level="0">
+
+<table cellspacing=0 cellpadding=0><tr>
+
+<td><a class="current" href="SEARCH.jsp">Book Air Tickets</a></td>
+</tr>
+
+<tr>
+<td><a class="current" href="SEARCH.jsp">Modify Bookings</a></td>
+</tr>
+
+<tr>
+<td><a class="current" href="JavaScript:void(0);">Book Hotel Rooms</a></td>
+</tr>
+</table>
+</div>
+
+<div class="menu" ID="Flight_info" style="z-index:1" level="0">
+<table cellspacing=0 cellpadding=0><tr>
+
+<td><a class="current" href="FLIGHT_INFO.jsp">Schedules</a></td>
+</tr>
+
+<tr>
+<td><a class="current" href="FLIGHT_INFO.jsp">Flight Status</td>
+</tr>
+
+<tr>
+<td><a class="current" href="JavaScript:void(0);">Destination Map</a></td>
+</tr>
+</table>
+</div>
+
+<div style="position:absolute;left:81%;top:25%">
+<table  cellspacing=2 width=70 height=80 bgcolor=#ccccff>
+<tr>
+<td><b>Login Id</b></td></tr>
+<tr><td><input type="text" size=17></td>
+</tr>
+<tr>
+<td><b>Password</b></td></tr>
+<tr><td><input type="text" size=17></td><td><img src="login.gif"></td>
+</tr>
+<tr><td> <b>New User ? <a href="#" style="color:#000000;text-decoration:none;font-size:12;font-family: "Garamound";"><font color=#ff3300> Register </b></a></td></tr>
+</table>
+</div>
+
+
+<div ID="pic1" style="position:absolute;left:81%;top:280px;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic1.gif" onMouseOver="animate('pic1')"  ></a>
+</div>
+
+<div ID="apic1" style="position:absolute;left:81%;top:280px;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic1.gif" onMouseOut="n_animate('pic1')"></a>
+</div>
+
+
+<div ID="pic2" style="position:absolute;left:81%;top:400px;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic2.gif" onMouseOver="animate('pic2')"  ></a>
+</div>
+
+<div ID="apic2" style="position:absolute;left:81%;top:400px;width=50;height=40;visibility:hidden">
+<a href="#" image-decoration="none"><img src="apic2.gif" onMouseOut="n_animate('pic2')"></a>
+</div>
+
+
+
+
+<div ID="pic3" style="position:absolute;left:81%;top:450px;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic3.gif" onMouseOver="animate('pic3')"  ></a>
+</div>
+
+<div ID="apic3" style="position:absolute;left:81%;top:450px;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic3.gif" onMouseOut="n_animate('pic3')"></a>
+</div>
+
+<div ID="pic4" style="position:absolute;left:30px;top:84%;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic4.gif" onMouseOver="animate('pic4')"  ></a>
+</div>
+
+<div ID="apic4" style="position:absolute;left:30px;top:84%;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic4.gif" onMouseOut="n_animate('pic4')" ></a>
+</div>
+
+<div  style="position:absolute;left:35%;top:33%;width=50;height=40">
+<img src="can.gif" >
+</div>
+
+
+
+
+
+<table style='position:absolute;visiblility: visible;left:3%;top:33.5%;z-index:0' cellspacing=0  cellpadding=0 border=0  >
+                    <tbody>
+                     <tr>
+                        <td id="changebook" style='background-color: #8968CD' align="center" width="104"><a href="#" style='text-decoration:none' onClick=changetab();><font id ="cbook"size="4.5" color="#FFE4B5">Booking</font></a>
+                        <td id="changehotel" style='background-color: #8968CD' align="center" width="104"><a href="#" style='text-decoration:none' onClick=changetab1();><font id="chotel" size="4.5" color="#FFE4B5">Hotel</font></a>
+                        <td id="changes" align="center" bgcolor="#8968CD" width="104"><a href="#" style='text-decoration:none' ><font size="4.5" color="#FFE4B5">Schedule</font></a>
+                    
+                     </tr>
+                    </tbody>
+                 </table>
+
+<div id='booking' style='position:absolute ; visiblility: visible;left:3%;top:37%'>
+<table BGCOLOR="#ccccff" HEIGHT="250" WIDTH="313" CELLPADDING="0" CELLSPACING="0" border="0">
+    <tr valign="top">   <td > 
+              <form method="Get" action="http://localhost:8080/jsp-examples/jsp/SearchServlet">
+                     <table  cellpadding="5" rules ="">
+					    <tr>
+						  <td>
+						    <input type="radio" name="" value="">Round Trip
+					      </td>
+					      <td>
+					        <input type="radio" name="" value="">One way
+						  </td>
+						</tr>
+					  <tr>
+					    <td>From &nbsp;<select name="flying_from">from
+                                              
+                                              <OPTION value=IXA>AGARTALA</OPTION> <OPTION 
+                          value=AMD>AHMEDABAD</OPTION> <OPTION 
+                          value=AJL>AIZAWL</OPTION> <OPTION 
+                          value=ATQ>AMRITSAR</OPTION> <OPTION 
+                          value=IXU>AURANGABAD</OPTION> <OPTION 
+                          value=IXB>BAGHDOGRA</OPTION> <OPTION 
+                          value=BLR>BANGALORE</OPTION> <OPTION 
+                          value=IXG>BELGAUM</OPTION> <OPTION 
+                          value=VID>BELLARY</OPTION> <OPTION 
+                          value=BHU>BHAVNAGAR</OPTION> <OPTION 
+                          value=BHO>BHOPAL</OPTION> <OPTION 
+                          value=BBI>BHUBANESWAR</OPTION> <OPTION 
+                          value=CCJ>CALICUT</OPTION> <OPTION 
+                          value=IXC>CHANDIGARH</OPTION> <OPTION 
+                          value=MAA>CHENNAI</OPTION> <OPTION 
+                          value=COK>COCHIN</OPTION> <OPTION 
+                          value=CJB>COIMBATORE</OPTION> <OPTION 
+                          value=DED>DEHRADUN</OPTION> <OPTION 
+                          value=DEL>DELHI</OPTION> <OPTION 
+                          value=DHM>DHARAMSALA</OPTION> <OPTION 
+                          value=DIB>DIBRUGARH</OPTION> <OPTION 
+                          value=DMU>DIMAPUR</OPTION> <OPTION 
+                          value=GOI>GOA</OPTION> <OPTION 
+                          value=GAU>GUWAHATI</OPTION> <OPTION 
+                          value=GWL>GWALIOR</OPTION> <OPTION 
+                          value=HBX>HUBLI</OPTION> <OPTION 
+                          value=HYD>HYDERABAD</OPTION> <OPTION 
+                          value=IMF>IMPHAL</OPTION> <OPTION 
+                          value=IDR>INDORE</OPTION> <OPTION 
+                          value=JLR>JABALPUR</OPTION> <OPTION 
+                          value=JAI>JAIPUR</OPTION> <OPTION 
+                          value=IXJ>JAMMU</OPTION> <OPTION 
+                          value=JGA>JAMNAGAR</OPTION> <OPTION 
+                          value=IXW>JAMSHEDPUR</OPTION> <OPTION 
+                          value=JDH>JODHPUR</OPTION> <OPTION 
+                          value=IXY>KANDLA</OPTION> <OPTION 
+                          value=KAT>KATRA</OPTION> <OPTION 
+                          value=KLH>KOLHAPUR</OPTION> <OPTION 
+                          value=CCU>KOLKATA</OPTION> <OPTION 
+                          value=KUU>KULU</OPTION> <OPTION value=IXL>LEH</OPTION> 
+                          <OPTION value=IXI>LILABARI</OPTION> <OPTION 
+                          value=LKO>LUCKNOW</OPTION> <OPTION 
+                          value=IXM>MADURAI</OPTION> <OPTION 
+                          value=IXE>MANGALORE</OPTION> <OPTION 
+                          value=Mumbai>MUMBAI</OPTION> <OPTION 
+                          value=NAG>NAGPUR</OPTION> <OPTION 
+                          value=IXP>PATHANKOT</OPTION> <OPTION 
+                          value=PAT>PATNA</OPTION> <OPTION value=IXZ>PORT 
+                          BLAIR</OPTION> <OPTION value=PNQ>PUNE</OPTION> <OPTION 
+                          value=RPR>RAIPUR</OPTION> <OPTION 
+                          value=RJA>RAJAHMUNDRY</OPTION> <OPTION 
+                          value=RAJ>RAJKOT</OPTION> <OPTION 
+                          value=IXR>RANCHI</OPTION> <OPTION 
+                          value=SLV>SHIMLA</OPTION> <OPTION 
+                          value=IXS>SILCHAR</OPTION> <OPTION 
+                          value=SXR>SRINAGAR</OPTION> <OPTION 
+                          value=TRZ>TIRUCHIRAPALLI</OPTION> <OPTION 
+                          value=TIR>TIRUPATI</OPTION> <OPTION 
+                          value=TRV>TRIVANDRUM</OPTION> <OPTION 
+                          value=TCR>TUTICORIN</OPTION> <OPTION 
+                          value=UDR>UDAIPUR</OPTION> <OPTION 
+                          value=BDQ>VADODARA</OPTION> <OPTION 
+                          value=SAN>VAISHNODEVI</OPTION> <OPTION 
+                          value=VGA>VIJAYWADA</OPTION> <OPTION 
+                          value=VTZ>VIZAG</OPTION></SELECT>
+					    </td>
+					 <tr> 
+					    <td align="center" >&nbsp;&nbsp;&nbsp;&nbsp;To &nbsp;<select name="flying_to">To
+                                              
+                                              <OPTION value=IXA>AGARTALA</OPTION> <OPTION 
+                          value=AMD>AHMEDABAD</OPTION> <OPTION 
+                          value=AJL>AIZAWL</OPTION> <OPTION 
+                          value=ATQ>AMRITSAR</OPTION> <OPTION 
+                          value=IXU>AURANGABAD</OPTION> <OPTION 
+                          value=IXB>BAGHDOGRA</OPTION> <OPTION 
+                          value=BLR>BANGALORE</OPTION> <OPTION 
+                          value=IXG>BELGAUM</OPTION> <OPTION 
+                          value=VID>BELLARY</OPTION> <OPTION 
+                          value=BHU>BHAVNAGAR</OPTION> <OPTION 
+                          value=BHO>BHOPAL</OPTION> <OPTION 
+                          value=BBI>BHUBANESWAR</OPTION> <OPTION 
+                          value=CCJ>CALICUT</OPTION> <OPTION 
+                          value=IXC>CHANDIGARH</OPTION> <OPTION 
+                          value=MAA>CHENNAI</OPTION> <OPTION 
+                          value=COK>COCHIN</OPTION> <OPTION 
+                          value=CJB>COIMBATORE</OPTION> <OPTION 
+                          value=DED>DEHRADUN</OPTION> <OPTION 
+                          value=Delhi>DELHI</OPTION> <OPTION 
+                          value=DHM>DHARAMSALA</OPTION> <OPTION 
+                          value=DIB>DIBRUGARH</OPTION> <OPTION 
+                          value=DMU>DIMAPUR</OPTION> <OPTION 
+                          value=GOI>GOA</OPTION> <OPTION 
+                          value=GAU>GUWAHATI</OPTION> <OPTION 
+                          value=GWL>GWALIOR</OPTION> <OPTION 
+                          value=HBX>HUBLI</OPTION> <OPTION 
+                          value=HYD>HYDERABAD</OPTION> <OPTION 
+                          value=IMF>IMPHAL</OPTION> <OPTION 
+                          value=IDR>INDORE</OPTION> <OPTION 
+                          value=JLR>JABALPUR</OPTION> <OPTION 
+                          value=JAI>JAIPUR</OPTION> <OPTION 
+                          value=IXJ>JAMMU</OPTION> <OPTION 
+                          value=JGA>JAMNAGAR</OPTION> <OPTION 
+                          value=IXW>JAMSHEDPUR</OPTION> <OPTION 
+                          value=JDH>JODHPUR</OPTION> <OPTION 
+                          value=IXY>KANDLA</OPTION> <OPTION 
+                          value=KAT>KATRA</OPTION> <OPTION 
+                          value=KLH>KOLHAPUR</OPTION> <OPTION 
+                          value=CCU>KOLKATA</OPTION> <OPTION 
+                          value=KUU>KULU</OPTION> <OPTION value=IXL>LEH</OPTION> 
+                          <OPTION value=IXI>LILABARI</OPTION> <OPTION 
+                          value=LKO>LUCKNOW</OPTION> <OPTION 
+                          value=IXM>MADURAI</OPTION> <OPTION 
+                          value=IXE>MANGALORE</OPTION> <OPTION 
+                          value=BOM>MUMBAI</OPTION> <OPTION 
+                          value=NAG>NAGPUR</OPTION> <OPTION 
+                          value=IXP>PATHANKOT</OPTION> <OPTION 
+                          value=PAT>PATNA</OPTION> <OPTION value=IXZ>PORT 
+                          BLAIR</OPTION> <OPTION value=PNQ>PUNE</OPTION> <OPTION 
+                          value=RPR>RAIPUR</OPTION> <OPTION 
+                          value=RJA>RAJAHMUNDRY</OPTION> <OPTION 
+                          value=RAJ>RAJKOT</OPTION> <OPTION 
+                          value=IXR>RANCHI</OPTION> <OPTION 
+                          value=SLV>SHIMLA</OPTION> <OPTION 
+                          value=IXS>SILCHAR</OPTION> <OPTION 
+                          value=SXR>SRINAGAR</OPTION> <OPTION 
+                          value=TRZ>TIRUCHIRAPALLI</OPTION> <OPTION 
+                          value=TIR>TIRUPATI</OPTION> <OPTION 
+                          value=TRV>TRIVANDRUM</OPTION> <OPTION 
+                          value=TCR>TUTICORIN</OPTION> <OPTION 
+                          value=UDR>UDAIPUR</OPTION> <OPTION 
+                          value=BDQ>VADODARA</OPTION> <OPTION 
+                          value=SAN>VAISHNODEVI</OPTION> <OPTION 
+                          value=VGA>VIJAYWADA</OPTION> <OPTION 
+                          value=VTZ>VIZAG</OPTION></SELECT>
+					    </td></tr>
+					 <tr><td align="center">Depart :&nbsp;<select name="ddate">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="">6</option>
+							<option value="">7</option>
+							
+                            </select></td>
+
+                                       <td><SELECT name="dmonth">
+						<OPTION>Mar 2008
+						<OPTION>Apr 2008
+						<OPTION>May 2008
+						<OPTION>Jun 2008
+					</SELECT></td></tr>
+
+
+					  <tr><td align="center">Return :&nbsp;<select name="rdate">
+							<option value="1">1</option>
+                   				        <option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="">6</option>
+							<option value="">7</option>
+
+
+                           
+                            </select></td>
+                                     <td><SELECT name="rmonth">
+						<OPTION>Mar 2008
+						<OPTION>Apr 2008
+						<OPTION>May 2008
+						<OPTION>Jun 2008
+					</SELECT></td>  
+
+
+
+</tr>
+
+
+
+
+
+
+
+					   <tr> <table><tr><td align=>&nbsp;Adults 12+ &nbsp;<select name=>
+                                                                         <option value="">1</option>
+					                                                     <option value="">2</option>
+							                                             <option value="">3</option>
+							                                             <option value="">4</option>
+							                                             <option value="">5</option></td>
+							 
+							           <td align=>&nbsp;Children 2-12 &nbsp;<select name=>
+                                                                         <option value="">0</option>
+					                                                     <option value="">1</option>
+							                                             <option value="">2</option>
+							                                             <option value="">3</option>
+							                                             <option value="">4</option></td>
+					                            <td align=>&nbsp;Infants 0-2 &nbsp;<select name=>
+                                                                         <option value="">0</option>
+					                                                     <option value="">1</option></td></tr> 
+                                                 </table>
+					   </tr>
+					   </tr>
+                                        <tr align="center"><td ><input type="submit" value="Check Availability"><td></tr>
+					  </table>	      
+				 
+                              </form>
+                 
+			   
+			  
+			 
+	   
+</div>
+
+
+<div id='hotel' style='position:absolute ; visibility:hidden;left:3%;top:37%'>
+   <tr>
+      <table bgcolor="#ccccff" height=230 width=313 rules="" border="0">
+         
+		 
+                 
+		 <tr valign="top">
+		      <td>
+                          <form>
+			       <table cellpadding="0" rules="" border="0">
+                                      <br>
+                                      
+                                      <tr>
+                                         <td>        Destination:<br>
+						 <select name="">
+                          
+                          <option     
+                          value=data/flightinfo/from_agartala.html>Select Destination City</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_ahmedabad.html>Ahmedabad</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_aizwal.html>Aizawl</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_aurangabad.html>Aurangabad</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_amritsar.html>Amritsar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_aurangabad.html>Aurangabad</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_bagdogra.html>Bagdogra</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_bangalore.html>Bangalore</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_belgaum.html>Belgaum</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_bhavnagar.html>Bhavnagar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_bhopal.html>Bhopal</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_bhubaneshwar.html>Bhubaneshwar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_chandigarh.html>Chandigarh</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_chennai.html>Chennai</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_cochin.html>Cochin</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_coimbatore.html>Coimbatore</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_dehradun.html>Dehradun</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_delhi.html>Delhi</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_dharamshala.html>Dharamshala</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_dibrugarh.html>Dibrugarh</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_dimapur.html>Dimapur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_goa.html>Goa</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_guwahati.html>Guwahati</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_guwahati.html>Gwalior</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_hubli.html>Hubli</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_hyderabad.html>Hyderabad</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_imphal.html>Imphal</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_indore.html>Indore</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jabalpur.html>Jabalpur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jaipur.html>Jaipur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jammu.html>Jammu</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jamnagar.html>Jamnagar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jamshedpur.html>Jamshedpur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_jodhpur.html>Jodhpur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_kandla.html>Kandla</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_kolhapur.html>Kolhapur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_kolkata.html>Kolkata</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_leh.html>Leh</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_lilabari.html>Lilabari</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_lucknow.html>Lucknow</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_madurai.html>Madurai</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_mangalore.html>Mangalore</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_mumbai.html>Mumbai</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_nagpur.html>Nagpur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_patna.html>Patna</OPTION> 
+                          <OPTION value=data/flightinfo/from_portblair.html>Port 
+                          Blair</OPTION> <OPTION 
+                          value=data/flightinfo/from_pune.html>Pune</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_raipur.html>Raipur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_rajamundary.html>Rajamundary</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_rajkot.html>Rajkot</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_ranchi.html>Ranchi</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_simla.html>Simla</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_silchar.html>Silchar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_srinagar.html>Srinagar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_tirupathi.html>Tirupathi</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_trichy.html>Trichy</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_trivandrum.html>Trivandrum</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_tuticorin.html>Tuticorin</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_udaipur.html>Udaipur</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_vadodra.html>Vadodra</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_vidyanagar.html>Vidyanagar</OPTION> 
+                          <OPTION 
+                          value=data/flightinfo/from_vijaywada.html>Vijaywada</OPTION> 
+                          <OPTION> 
+                        </option>
+                         </select>
+		               </td>
+                           <td width=100 align="center"><img src="pic5.gif" ></td> </tr>
+                        </table>
+                        
+                         <table cellpadding="1" cellspace="2" rules="" border="0"><tr>
+                                <td>Check In:<br> 
+                                     &nbsp; &nbsp; &nbsp;<select>
+                                             <option>1
+                                             <option>2                                                
+                                             <option>3
+                                             <option>4                                              
+                                             <option>5
+                                             <option>6                                                
+                                             <option>7
+                                             <option>8
+                                             <option>9
+                                             <option>10                                                
+                                             <option>11
+                                             <option>12                                              
+                                             <option>13
+                                             <option>14                                                
+                                             <option>15
+                                             <option>16
+                                             <option>17
+                                             <option>18                                               
+                                             <option>19
+                                             <option>20                                              
+                                             <option>21
+                                             <option>22                                               
+                                             <option>23
+                                             <option>24
+                                             <option>25
+                                             <option>26                                               
+                                             <option>27
+                                             <option>28                                             
+                                             <option>29
+                                             <option>30                                                
+                                             <option>31
+                                     </select>     
+                                 </td>
+                                  <td><br><select>
+                                             <option>Jan
+                                             <option>Feb                                                
+                                             <option>Mar
+                                             <option>Apr                                            
+                                             <option>May
+                                             <option>Jun                                                
+                                             <option>Jul
+                                             <option>Aug
+                                             <option>Sep
+                                             <option>Oct                                                
+                                             <option>Nov
+                                         <option>Dec
+                                    </select>   
+                                   </td>
+                                   <td><br><select>
+                                             <option>2008
+                                             <option>2009 
+                                   </td></select>
+                                 </tr>   
+                                 <tr>
+                                  
+                                      <td>Check Out:<br> 
+                                       &nbsp; &nbsp; &nbsp;<select>
+                                             <option>1
+                                             <option>2                                                
+                                             <option>3
+                                             <option>4                                              
+                                             <option>5
+                                             <option>6                                                
+                                             <option>7
+                                             <option>8
+                                             <option>9
+                                             <option>10                                                
+                                             <option>11
+                                             <option>12                                              
+                                             <option>13
+                                             <option>14                                                
+                                             <option>15
+                                             <option>16
+                                             <option>17
+                                             <option>18                                               
+                                             <option>19
+                                             <option>20                                              
+                                             <option>21
+                                             <option>22                                               
+                                             <option>23
+                                             <option>24
+                                             <option>25
+                                             <option>26                                               
+                                             <option>27
+                                             <option>28                                             
+                                             <option>29
+                                             <option>30                                                
+                                             <option>31
+                                     </select>     
+                                 </td>
+                                  <td><br><select>
+                                             <option>Jan
+                                             <option>Feb                                                
+                                             <option>Mar
+                                             <option>Apr                                            
+                                             <option>May
+                                             <option>Jun                                                
+                                             <option>Jul
+                                             <option>Aug
+                                             <option>Sep
+                                             <option>Oct                                                
+                                             <option>Nov
+                                         <option>Dec
+                                    </select>   
+                                   </td>
+                                   <td><br><select>
+                                             <option>2008
+                                             <option>2009 
+                                       </select></td>
+                                   </tr>
+	                         <tr>
+                                    <td>Rooms:
+                                     <br>&nbsp; &nbsp; &nbsp;<select style='width:"40"'>
+                                         <option>1 
+                                         <option>2 
+                                         <option>3 
+                                         </select> 
+                                    </td>
+                                    <td>Adult:
+                                      <br>&nbsp;<select style='width:"40"'>
+                                         <option>1 
+                                         <option>2 
+                                         <option>3 
+                                         </select> 
+                                    </td>
+                                     <td>Child:
+                                      <br>&nbsp;<select style='width:"40"'>
+                                         <option>1 
+                                         <option>2 
+                                         <option>3 
+                                         </select> 
+                                     </td>
+                                 </tr>
+                                  </table>
+                		 </form>
+		    </td>
+		</tr>
+	     
+	  
+   </tr> <tr align="center" valign="center"><td ><input type="submit" value="Check Availability"><td></tr>
+</table>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+          
+
+ 
+      

@@ -1,0 +1,25 @@
+body
+{
+ background-color:#E3E4FA;
+}
+
+#form1
+{
+ BORDER-RIGHT: #dbdbdb 1px solid; 
+ BORDER-LEFT: #dbdbdb 1px solid;
+ border-top: #dbdbdb 1px solid;
+ border-bottom: #dbdbdb 1px solid;
+ margin-right:195px;
+ margin-left:40px;
+ padding:10px;
+ height:500px;
+ background-color: #FFFFFF;
+}
+
+#table1
+{
+ width:100%;
+ background-color:#ffffcc;
+ font: bold 0.7em Verdana, Arial, sans-serif;
+ border:#dbdbdb 2px solid;
+}

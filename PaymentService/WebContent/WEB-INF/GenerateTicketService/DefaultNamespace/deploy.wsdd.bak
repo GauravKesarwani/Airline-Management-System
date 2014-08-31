@@ -1,0 +1,37 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GenerateTicketService WSDL service -->
+
+  <service name="GenerateTicket" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://DefaultNamespace"/>
+      <parameter name="wsdlServiceElement" value="GenerateTicketService"/>
+      <parameter name="schemaQualified" value="http://ticket,http://DefaultNamespace"/>
+      <parameter name="wsdlServicePort" value="GenerateTicket"/>
+      <parameter name="className" value="DefaultNamespace.GenerateTicketSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="GenerateTicket"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="ticketInfo" qname="operNS:ticketInfo" xmlns:operNS="http://DefaultNamespace" returnQName="retNS:ticketInfoReturn" xmlns:retNS="http://DefaultNamespace" returnType="rtns:TicketBean" xmlns:rtns="http://ticket" soapAction="" >
+        <parameter qname="pns:reservationid" xmlns:pns="http://DefaultNamespace" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="ticketInfo"/>
+
+      <typeMapping
+        xmlns:ns="http://ticket"
+        qname="ns:TicketBean"
+        type="java:ticket.TicketBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

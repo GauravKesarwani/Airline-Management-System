@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<TITLE>
+</TITLE>
+<link rel="stylesheet" type="text/css" href="flight_info.css" />
+
+<script language="javascript">
+
+function focus1()
+{
+ 
+    document.search_flight.flight_no.focus();
+    document.getElementByName("origin").style.visibility="hidden";
+    
+}
+
+function focus2()
+{
+ document.search_flight.origin.focus();
+}
+</script>
+</HEAD>
+
+
+
+<BODY>
+<center>
+<IMG SRC="top.gif">
+
+<table bgcolor="#9E7BFF" bordercolor="#FFFF00" width="93%" align=center>
+ <tr>
+
+  <td width="14%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.About_US,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;About Us
+   </a>
+  </td>
+
+  
+  <td width="15%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Plan_Book,this.parentElement,'BOTTOM');">
+    <img src="pic7.png">&nbsp;Plan & Book
+   </a>
+  </td>
+
+  <td width="18%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Flight_info,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;Flight Information
+   </a>
+  </td>
+  
+   <td width="16%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.View,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;Special Offers
+   </a>
+  </td>
+
+ <td width="17%">
+   <a>
+   <img src="pic7.png">&nbsp;Product & Services
+   </a>
+  </td>
+  
+  <td width="15%">
+   <a>
+   <img src="pic7.png">&nbsp;Contact Us
+   </a>
+  </td>
+
+ </tr>
+</table>
+
+<Form id="form1"  name="search_flight" method="Get" action="http://localhost:8080/jsp-examples/jsp/FlightInfoServlet">
+<BR><BR>
+
+<TABLE id="table1">
+<TR>
+<TH colspan=2>FLIGHT INFORMATION</TH>
+</TR>
+<TR><TD>
+<BR>
+</TD></TR>
+<TR>
+<TD colspan=2><B>The Timings Below are indicative only.For exact timings please contact Penguin airways call center 09839061156</TD>
+</TR>
+<TR>
+<TD><BR></TD>
+</TR>
+
+<TR ALIGN=left>
+<TD>
+<INPUT TYPE=radio name="search"  value="search_by_fno" onclick="focus1()">
+By Flight Number
+</TD>
+
+<TD align=center>
+<INPUT TYPE=radio name="search"  value="search_by_sector" onclick="focus2()">
+By Sector
+</TD>
+</TR>
+
+<TR>
+<TD><BR><BR></TD>
+</TR>
+
+<TR>
+<TD colspan=2>
+Flight Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT TYPE=text name="flight_no">
+
+
+
+<INPUT TYPE=submit name=flight_information value=flight_info>
+</TD>
+</TR>
+
+<TR>
+<TD><BR></TD>
+</TR>
+
+<TR rowspan=1>
+<TD>Select Origin City&nbsp;&nbsp;<INPUT TYPE=text name="origin"></TD>
+<TD>Select Destination City&nbsp;&nbsp;<INPUT TYPE=text name="destination"></TD>
+<TD><INPUT TYPE=submit name=flight_information value=flight_info></TD>
+</TR>
+
+</TABLE>
+
+</Form>
+</center>
+
+<div ID="pic1" style="position:absolute;left:81%;top:145px;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic1.gif" onMouseOver="animate('pic1')"  ></a>
+</div>
+
+<div ID="apic1" style="position:absolute;left:81%;top:180px;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic1.gif" onMouseOut="n_animate('pic1')"></a>
+</div>
+
+
+<div ID="pic2" style="position:absolute;left:81%;top:290px;width=50;height=40;">
+<a href="#" style='text-decoration:none'><img src="pic2.gif" onMouseOver="animate('pic2')"  ></a>
+</div>
+
+<div ID="apic2" style="position:absolute;left:81%;top:290px;width=50;height=40;visibility:hidden">
+<a href="#" image-decoration="none"><img src="apic2.gif" onMouseOut="n_animate('pic2')"></a>
+</div>
+
+
+
+
+<div ID="pic3" style="position:absolute;left:81%;top:350px;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic3.gif" onMouseOver="animate('pic3')"  ></a>
+</div>
+
+<div ID="apic3" style="position:absolute;left:81%;top:350px;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic3.gif" onMouseOut="n_animate('pic3')"></a>
+</div>
+
+<div ID="pic4" style="position:absolute;left:81%;top:81%;width=50;height=40">
+<a href="#" style='text-decoration:none'><img src="pic4.gif" onMouseOver="animate('pic4')"  ></a>
+</div>
+
+<div ID="apic4" style="position:absolute;left:81%;top:80%;width=50;height=40;visibility:hidden">
+<a href="#" style='text-decoration:none'><img src="apic4.gif" onMouseOut="n_animate('pic4')" ></a>
+</div>
+</BODY>
+
+</HTML>

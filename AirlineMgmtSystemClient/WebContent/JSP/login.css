@@ -1,0 +1,65 @@
+body
+{
+ margin: 10px 20px 20px 20px;
+ background-color:#E3E4FA;
+}
+
+#content
+{
+ BORDER-RIGHT: #dbdbdb 1px solid; 
+ BORDER-LEFT: #dbdbdb 1px solid;
+ border-top: #dbdbdb 1px solid;
+ border-bottom: #dbdbdb 1px solid;
+ margin-top: 10px;
+ margin-bottom:20px;
+ margin-left:20px;
+ padding:10px;
+ text-align:justify;
+ background-color: #FFFFFF;
+}
+
+table
+{
+background-color:ffffcc;
+
+}
+}
+
+#table1
+{
+ margin:20px 20px 10px 20px;
+}
+
+#table2
+{
+margin-top:20px;
+margin-left:40px;
+}
+ 
+#table3
+{
+ width=780px;
+ margin:40px 20px 20px 40px;
+}
+
+#table4
+{
+ margin:20px 20px 10px 20px;
+ }
+
+#table5
+{
+ width=780px;
+ margin:40px 20px 20px 40px;
+}
+
+#table6
+{
+ margin:20px 20px 10px 20px;
+}
+
+#table7
+{
+ width=780px;
+ margin:40px 20px 20px 40px;
+}

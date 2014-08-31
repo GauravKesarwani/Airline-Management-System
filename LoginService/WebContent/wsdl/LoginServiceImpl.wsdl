@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.att.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.att.com" xmlns:intf="http://ws.att.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.att.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="deleteProfile">
+    <complexType>
+     <sequence>
+      <element name="personId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteProfileResponse">
+    <complexType/>
+   </element>
+   <element name="getProfileInfo">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProfileInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getProfileInfoReturn" type="impl:ProfileBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ProfileBean">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="city" nillable="true" type="xsd:string"/>
+     <element name="contact_no" nillable="true" type="xsd:long"/>
+     <element name="created_by" nillable="true" type="xsd:string"/>
+     <element name="creation_date" nillable="true" type="xsd:string"/>
+     <element name="date_of_birth" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="first_name" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="id_no" nillable="true" type="xsd:string"/>
+     <element name="id_type" nillable="true" type="xsd:string"/>
+     <element name="last_name" nillable="true" type="xsd:string"/>
+     <element name="last_updated" nillable="true" type="xsd:string"/>
+     <element name="last_updated_by" nillable="true" type="xsd:string"/>
+     <element name="middle_initial" nillable="true" type="xsd:string"/>
+     <element name="passWrd" nillable="true" type="xsd:string"/>
+     <element name="person_id" type="xsd:int"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="traveller_id" type="xsd:int"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+     <element name="zipcode" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="loginValidate">
+    <complexType>
+     <sequence>
+      <element name="userName" type="xsd:string"/>
+      <element name="pass" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginValidateResponse">
+    <complexType>
+     <sequence>
+      <element name="loginValidateReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListOfCustomers">
+    <complexType/>
+   </element>
+   <element name="getListOfCustomersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListOfCustomersReturn" type="impl:ProfileBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProfile">
+    <complexType>
+     <sequence>
+      <element name="userbean1" type="impl:ProfileBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="updateProfileReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getListOfCustomersRequest">
+
+      <wsdl:part element="impl:getListOfCustomers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProfileRequest">
+
+      <wsdl:part element="impl:updateProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProfileResponse">
+
+      <wsdl:part element="impl:updateProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginValidateResponse">
+
+      <wsdl:part element="impl:loginValidateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginValidateRequest">
+
+      <wsdl:part element="impl:loginValidate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProfileRequest">
+
+      <wsdl:part element="impl:deleteProfile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProfileInfoResponse">
+
+      <wsdl:part element="impl:getProfileInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProfileInfoRequest">
+
+      <wsdl:part element="impl:getProfileInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProfileResponse">
+
+      <wsdl:part element="impl:deleteProfileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListOfCustomersResponse">
+
+      <wsdl:part element="impl:getListOfCustomersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LoginServiceImpl">
+
+      <wsdl:operation name="deleteProfile">
+
+         <wsdl:input message="impl:deleteProfileRequest" name="deleteProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteProfileResponse" name="deleteProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProfileInfo">
+
+         <wsdl:input message="impl:getProfileInfoRequest" name="getProfileInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getProfileInfoResponse" name="getProfileInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loginValidate">
+
+         <wsdl:input message="impl:loginValidateRequest" name="loginValidateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginValidateResponse" name="loginValidateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListOfCustomers">
+
+         <wsdl:input message="impl:getListOfCustomersRequest" name="getListOfCustomersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListOfCustomersResponse" name="getListOfCustomersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProfile">
+
+         <wsdl:input message="impl:updateProfileRequest" name="updateProfileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateProfileResponse" name="updateProfileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LoginServiceImplSoapBinding" type="impl:LoginServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="deleteProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProfileInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProfileInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProfileInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loginValidate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginValidateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginValidateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListOfCustomers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListOfCustomersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListOfCustomersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LoginServiceImplService">
+
+      <wsdl:port binding="impl:LoginServiceImplSoapBinding" name="LoginServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/LoginService/services/LoginServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

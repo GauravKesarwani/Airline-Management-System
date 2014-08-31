@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FlightDetailHelperService WSDL service -->
+
+  <service name="FlightDetailHelper" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://helperClasses"/>
+      <parameter name="wsdlServiceElement" value="FlightDetailHelperService"/>
+      <parameter name="schemaQualified" value="http://helperClasses,http://beanFiles"/>
+      <parameter name="wsdlServicePort" value="FlightDetailHelper"/>
+      <parameter name="className" value="helperClasses.FlightDetailHelperSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="FlightDetailHelper"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="cancelFlight" qname="operNS:cancelFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:cancelFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+        <parameter qname="pns:flightIds" xmlns:pns="http://helperClasses" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createNewFlight" qname="operNS:createNewFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:createNewFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+        <parameter qname="pns:newFilght" xmlns:pns="http://helperClasses" type="tns:FlightDetailsBean" xmlns:tns="http://beanFiles"/>
+      </operation>
+      <operation name="listAllFlights" qname="operNS:listAllFlights" xmlns:operNS="http://helperClasses" returnQName="retNS:listAllFlightsReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+      </operation>
+      <operation name="getFlightByFlightIds" qname="operNS:getFlightByFlightIds" xmlns:operNS="http://helperClasses" returnQName="retNS:getFlightByFlightIdsReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+        <parameter qname="pns:flightIds" xmlns:pns="http://helperClasses" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateFlights" qname="operNS:updateFlights" xmlns:operNS="http://helperClasses" returnQName="retNS:updateFlightsReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+        <parameter qname="pns:flights" xmlns:pns="http://helperClasses" type="tns:FlightDetailsBean" xmlns:tns="http://beanFiles"/>
+      </operation>
+      <parameter name="allowedMethods" value="updateFlights listAllFlights createNewFlight getFlightByFlightIds cancelFlight"/>
+
+      <typeMapping
+        xmlns:ns="http://beanFiles"
+        qname="ns:FlightDetailsBean"
+        type="java:beanFiles.FlightDetailsBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

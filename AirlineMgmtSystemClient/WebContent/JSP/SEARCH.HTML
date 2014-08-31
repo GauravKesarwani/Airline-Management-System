@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<TITLE>BOOKING</TITLE>
+<link rel="stylesheet" type="text/css" href="search.css">
+</HEAD>
+
+
+<FORM  id="form1" method="Get"  action="http://localhost:8080/jsp-examples/jsp/SearchServlet">
+
+<img src="top.gif" style="margin-left:34px" border=0>
+<table bgcolor="#9E7BFF" bordercolor="#FFFF00" width="93%" align=center>
+ <tr>
+
+  <td width="14%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.About_US,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;About Us
+   </a>
+  </td>
+
+  
+  <td width="15%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Plan_Book,this.parentElement,'BOTTOM');">
+    <img src="pic7.png">&nbsp;Plan & Book
+   </a>
+  </td>
+
+  <td width="18%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.Flight_info,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;Flight Information
+   </a>
+  </td>
+  
+   <td width="16%">
+   <a onMouseOver="JavaScript:openMenuRelative(document.all.View,this.parentElement,'BOTTOM');">
+   <img src="pic7.png">&nbsp;Special Offers
+   </a>
+  </td>
+
+ <td width="17%">
+   <a>
+   <img src="pic7.png">&nbsp;Product & Services
+   </a>
+  </td>
+  
+  <td width="15%">
+   <a>
+   <img src="pic7.png">&nbsp;Contact Us
+   </a>
+  </td>
+
+ </tr>
+</table>
+<BR><BR>
+
+
+
+
+<TABLE  id="table2" cellspacing=0 cellpadding=0   >
+
+<TR>
+<TD colspan=2><INPUT type=RADIO name="TRIP" value="ONE WAY" CHECKED>ONE   WAY</TD>
+<TD colspan=2><INPUT type=RADIO name="TRIP" value="ROUND TRIP">ROUND  TRIP</TD>
+
+</TR>
+
+
+<TR>
+<TD colspan=2>
+<B>Flying From:<B>
+<BR>
+<SELECT  name="flying_from">
+<OPTION>--From--
+<OPTION>Agartala
+<OPTION>Bhopal
+<OPTION>Bhubaneshwar
+<OPTION>Chennai
+<OPTION>Delhi
+<OPTION>Hyderabad
+<OPTION>Jammu
+<OPTION>Kolkatta
+<OPTION>Mumbai
+<OPTION>Srinagar
+
+
+</SELECT>
+</TD>
+
+<TD colspan=2>
+<B>Flying To:<B>
+<BR>
+<SELECT  name="flying_to">
+<OPTION>--To--
+<OPTION>Agartala
+<OPTION>Bhopal
+<OPTION>Bhubaneshwar
+<OPTION>Chennai
+<OPTION>Delhi
+<OPTION>Hyderabad
+<OPTION>Jammu
+<OPTION>Kolkatta
+<OPTION>Mumbai
+<OPTION>Srinagar
+
+
+
+
+</SELECT>
+</TD>
+
+</TR>
+
+<TR rowspan=2>
+
+<TD colspan=2>
+<B>Departure Date:</B> 
+<BR>
+<SELECT name="ddate">
+<OPTION>1
+<OPTION>2
+<OPTION>3
+<OPTION>4
+</SELECT>
+
+<SELECT name="dmonth">
+<OPTION>Mar 2008
+<OPTION>Apr 2008
+<OPTION>May 2008
+<OPTION>Jun 2008
+</SELECT>
+</TD>
+
+<TD colspan=2>
+<B>Return Date:</B>
+<BR>
+<SELECT name="rdate">
+<OPTION>1
+<OPTION>2
+<OPTION>3
+<OPTION>4
+</SELECT>
+
+<SELECT name="rmonth">
+
+<OPTION>Mar 2008
+<OPTION>Apr 2008
+<OPTION>May 2008
+<OPTION>Jun 2008
+</SELECT>
+</TD>
+</TR>
+
+
+<TR ALIGN=CENTER >
+<TD><B>Passengers:<B></TD>
+
+<TD>Adult:
+<SELECT name="adult">
+<OPTION>1
+<OPTION>2
+<OPTION>3
+<OPTION>4
+</SELECT>
+</TD>
+
+<TD>Child:
+<SELECT name="child">
+<OPTION>1
+<OPTION>2
+<OPTION>3
+<OPTION>4
+<OPTION>5
+</SELECT>
+</TD>
+
+<TD>Infant:
+<SELECT>
+<OPTION>0
+<OPTION>1
+<OPTION>2
+<OPTION>3
+<OPTION>4
+</SELECT>
+</TD>
+</TR>
+
+<TR>
+<TD colspan=3></TD>
+<TD><INPUT type=submit value=" next  "></TD>
+</TR>
+
+</TABLE>
+
+</DIV>
+
+<table id="table3" width="30%"   cellspacing=0 cellpadding=0>
+
+<tr>
+<td > Modify/Cancel</td>
+</tr>
+
+<tr>
+<td>Name<BR>
+<input type=text name="name">
+</td>
+</tr>
+
+
+<tr>
+<td>Confirmation Number<Br>
+<input type=text name="number"></td>
+</tr>
+
+<tr>
+<td><input type=button value=" next ">
+</tr> 
+
+</table>
+
+
+</FORM>
+
+
+</HTML>

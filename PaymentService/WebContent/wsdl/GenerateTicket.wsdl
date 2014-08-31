@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:tns1="http://ticket" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ticket"/>
+   <element name="ticketInfo">
+    <complexType>
+     <sequence>
+      <element name="reservationid" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ticketInfoResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="ticketInfoReturn" type="tns1:TicketBean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://ticket" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="TicketBean">
+    <sequence>
+     <element name="amount" type="xsd:int"/>
+     <element name="departuredate" nillable="true" type="xsd:string"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="flightNo" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="source" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="ticketInfoResponse">
+
+      <wsdl:part element="impl:ticketInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ticketInfoRequest">
+
+      <wsdl:part element="impl:ticketInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GenerateTicket">
+
+      <wsdl:operation name="ticketInfo">
+
+         <wsdl:input message="impl:ticketInfoRequest" name="ticketInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ticketInfoResponse" name="ticketInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GenerateTicketSoapBinding" type="impl:GenerateTicket">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="ticketInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ticketInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ticketInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GenerateTicketService">
+
+      <wsdl:port binding="impl:GenerateTicketSoapBinding" name="GenerateTicket">
+
+         <wsdlsoap:address location="http://localhost:8080/PaymentService/services/GenerateTicket"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

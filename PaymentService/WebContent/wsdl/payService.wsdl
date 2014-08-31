@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="payByCredit">
+    <complexType>
+     <sequence>
+      <element name="reservationId" type="xsd:int"/>
+      <element name="cardNo" type="xsd:long"/>
+      <element name="date" type="xsd:string"/>
+      <element name="FlightID" type="xsd:int"/>
+      <element name="FlightNo" type="xsd:string"/>
+      <element name="personId" type="xsd:int"/>
+      <element name="Amt" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="payByCreditResponse">
+    <complexType>
+     <sequence>
+      <element name="payByCreditReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateStatus">
+    <complexType>
+     <sequence>
+      <element name="reservationid" type="xsd:int"/>
+      <element name="people" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateStatusResponse">
+    <complexType>
+     <sequence>
+      <element name="updateStatusReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateStatusRequest">
+
+      <wsdl:part element="impl:updateStatus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="payByCreditRequest">
+
+      <wsdl:part element="impl:payByCredit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="payByCreditResponse">
+
+      <wsdl:part element="impl:payByCreditResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateStatusResponse">
+
+      <wsdl:part element="impl:updateStatusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="payService">
+
+      <wsdl:operation name="payByCredit">
+
+         <wsdl:input message="impl:payByCreditRequest" name="payByCreditRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:payByCreditResponse" name="payByCreditResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStatus">
+
+         <wsdl:input message="impl:updateStatusRequest" name="updateStatusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateStatusResponse" name="updateStatusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="payServiceSoapBinding" type="impl:payService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="payByCredit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="payByCreditRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="payByCreditResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="payServiceService">
+
+      <wsdl:port binding="impl:payServiceSoapBinding" name="payService">
+
+         <wsdlsoap:address location="http://localhost:8080/PaymentService/services/payService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

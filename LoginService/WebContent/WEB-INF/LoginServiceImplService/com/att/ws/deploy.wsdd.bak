@@ -1,0 +1,49 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LoginServiceImplService WSDL service -->
+
+  <service name="LoginServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.att.com"/>
+      <parameter name="wsdlServiceElement" value="LoginServiceImplService"/>
+      <parameter name="schemaQualified" value="http://ws.att.com"/>
+      <parameter name="wsdlServicePort" value="LoginServiceImpl"/>
+      <parameter name="className" value="com.att.ws.LoginServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="LoginServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="deleteProfile" qname="operNS:deleteProfile" xmlns:operNS="http://ws.att.com" soapAction="" >
+        <parameter qname="pns:personId" xmlns:pns="http://ws.att.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getProfileInfo" qname="operNS:getProfileInfo" xmlns:operNS="http://ws.att.com" returnQName="retNS:getProfileInfoReturn" xmlns:retNS="http://ws.att.com" returnType="rtns:ProfileBean" xmlns:rtns="http://ws.att.com" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://ws.att.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="loginValidate" qname="operNS:loginValidate" xmlns:operNS="http://ws.att.com" returnQName="retNS:loginValidateReturn" xmlns:retNS="http://ws.att.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userName" xmlns:pns="http://ws.att.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:pass" xmlns:pns="http://ws.att.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getListOfCustomers" qname="operNS:getListOfCustomers" xmlns:operNS="http://ws.att.com" returnQName="retNS:getListOfCustomersReturn" xmlns:retNS="http://ws.att.com" returnType="rtns:ProfileBean" xmlns:rtns="http://ws.att.com" soapAction="" >
+      </operation>
+      <operation name="updateProfile" qname="operNS:updateProfile" xmlns:operNS="http://ws.att.com" returnQName="retNS:updateProfileReturn" xmlns:retNS="http://ws.att.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:userbean1" xmlns:pns="http://ws.att.com" type="tns:ProfileBean" xmlns:tns="http://ws.att.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="getProfileInfo getListOfCustomers deleteProfile loginValidate updateProfile"/>
+
+      <typeMapping
+        xmlns:ns="http://ws.att.com"
+        qname="ns:ProfileBean"
+        type="java:com.att.ws.ProfileBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

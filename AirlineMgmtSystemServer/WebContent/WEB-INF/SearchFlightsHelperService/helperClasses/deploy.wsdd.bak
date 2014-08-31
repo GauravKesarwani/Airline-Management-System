@@ -1,0 +1,84 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SearchFlightsHelperService WSDL service -->
+
+  <service name="SearchFlightsHelper" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://helperClasses"/>
+      <parameter name="wsdlServiceElement" value="SearchFlightsHelperService"/>
+      <parameter name="schemaQualified" value="http://helperClasses,http://fdpackage,http://beanFiles"/>
+      <parameter name="wsdlServicePort" value="SearchFlightsHelper"/>
+      <parameter name="className" value="helperClasses.SearchFlightsHelperSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SearchFlightsHelper"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getFlightlist" qname="operNS:getFlightlist" xmlns:operNS="http://helperClasses" returnQName="retNS:getFlightlistReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightListBean" xmlns:rtns="http://fdpackage" soapAction="" >
+      </operation>
+      <operation name="searchFlightByBookingId" qname="operNS:searchFlightByBookingId" xmlns:operNS="http://helperClasses" returnQName="retNS:searchFlightByBookingIdReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:flightdetails" xmlns:pns="http://helperClasses" type="tns:FlightDetailsBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="updateFlight" qname="operNS:updateFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:updateFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:flight" xmlns:pns="http://helperClasses" type="tns:FlightListBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="getFlightInfo" qname="operNS:getFlightInfo" xmlns:operNS="http://helperClasses" returnQName="retNS:getFlightInfoReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightListBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:flbean" xmlns:pns="http://helperClasses" type="tns:FlightListBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="searchCustomerByBookingIdRef" qname="operNS:searchCustomerByBookingIdRef" xmlns:operNS="http://helperClasses" returnQName="retNS:searchCustomerByBookingIdRefReturn" xmlns:retNS="http://helperClasses" returnType="rtns:CustomerBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:cust" xmlns:pns="http://helperClasses" type="tns:CustomerBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="searchReturnFlight" qname="operNS:searchReturnFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:searchReturnFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:flightdetails" xmlns:pns="http://helperClasses" type="tns:FlightDetailsBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="searchCancelledFlights" qname="operNS:searchCancelledFlights" xmlns:operNS="http://helperClasses" returnQName="retNS:searchCancelledFlightsReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:date" xmlns:pns="http://helperClasses" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="searchOneWayFlight" qname="operNS:searchOneWayFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:searchOneWayFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:FlightDetailsBean" xmlns:rtns="http://fdpackage" soapAction="" >
+        <parameter qname="pns:flightdetails" xmlns:pns="http://helperClasses" type="tns:FlightDetailsBean" xmlns:tns="http://fdpackage"/>
+      </operation>
+      <operation name="loadReservationsForFlight" qname="operNS:loadReservationsForFlight" xmlns:operNS="http://helperClasses" returnQName="retNS:loadReservationsForFlightReturn" xmlns:retNS="http://helperClasses" returnType="rtns:ActiveReservationsBean" xmlns:rtns="http://beanFiles" soapAction="" >
+        <parameter qname="pns:flightId" xmlns:pns="http://helperClasses" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchFlightByBookingId searchOneWayFlight searchCustomerByBookingIdRef updateFlight searchReturnFlight loadReservationsForFlight searchCancelledFlights getFlightInfo getFlightlist"/>
+
+      <typeMapping
+        xmlns:ns="http://fdpackage"
+        qname="ns:FlightListBean"
+        type="java:fdpackage.FlightListBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beanFiles"
+        qname="ns:ActiveReservationsBean"
+        type="java:beanFiles.ActiveReservationsBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://fdpackage"
+        qname="ns:FlightDetailsBean"
+        type="java:fdpackage.FlightDetailsBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://fdpackage"
+        qname="ns:CustomerBean"
+        type="java:fdpackage.CustomerBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

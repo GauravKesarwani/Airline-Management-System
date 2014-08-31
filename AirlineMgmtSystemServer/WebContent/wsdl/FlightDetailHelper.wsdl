@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://helperClasses" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://helperClasses" xmlns:intf="http://helperClasses" xmlns:tns1="http://beanFiles" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://helperClasses" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beanFiles"/>
+   <element name="cancelFlight">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="flightIds" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelFlightResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="cancelFlightReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createNewFlight">
+    <complexType>
+     <sequence>
+      <element name="newFilght" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createNewFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="createNewFlightReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listAllFlights">
+    <complexType/>
+   </element>
+   <element name="listAllFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listAllFlightsReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlightByFlightIds">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="flightIds" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFlightByFlightIdsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFlightByFlightIdsReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlights">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="flights" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateFlightsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="updateFlightsReturn" type="tns1:FlightDetailsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beanFiles" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="FlightDetailsBean">
+    <sequence/>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateFlightsResponse">
+
+      <wsdl:part element="impl:updateFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelFlightRequest">
+
+      <wsdl:part element="impl:cancelFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightByFlightIdsResponse">
+
+      <wsdl:part element="impl:getFlightByFlightIdsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createNewFlightRequest">
+
+      <wsdl:part element="impl:createNewFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelFlightResponse">
+
+      <wsdl:part element="impl:cancelFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAllFlightsResponse">
+
+      <wsdl:part element="impl:listAllFlightsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateFlightsRequest">
+
+      <wsdl:part element="impl:updateFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listAllFlightsRequest">
+
+      <wsdl:part element="impl:listAllFlights" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFlightByFlightIdsRequest">
+
+      <wsdl:part element="impl:getFlightByFlightIds" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createNewFlightResponse">
+
+      <wsdl:part element="impl:createNewFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FlightDetailHelper">
+
+      <wsdl:operation name="cancelFlight">
+
+         <wsdl:input message="impl:cancelFlightRequest" name="cancelFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelFlightResponse" name="cancelFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createNewFlight">
+
+         <wsdl:input message="impl:createNewFlightRequest" name="createNewFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createNewFlightResponse" name="createNewFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAllFlights">
+
+         <wsdl:input message="impl:listAllFlightsRequest" name="listAllFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listAllFlightsResponse" name="listAllFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlightByFlightIds">
+
+         <wsdl:input message="impl:getFlightByFlightIdsRequest" name="getFlightByFlightIdsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFlightByFlightIdsResponse" name="getFlightByFlightIdsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlights">
+
+         <wsdl:input message="impl:updateFlightsRequest" name="updateFlightsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateFlightsResponse" name="updateFlightsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FlightDetailHelperSoapBinding" type="impl:FlightDetailHelper">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="cancelFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createNewFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createNewFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createNewFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listAllFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listAllFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listAllFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFlightByFlightIds">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFlightByFlightIdsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFlightByFlightIdsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateFlights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateFlightsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateFlightsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FlightDetailHelperService">
+
+      <wsdl:port binding="impl:FlightDetailHelperSoapBinding" name="FlightDetailHelper">
+
+         <wsdlsoap:address location="http://localhost:8080/AirlineMgmtSystemServer/services/FlightDetailHelper"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

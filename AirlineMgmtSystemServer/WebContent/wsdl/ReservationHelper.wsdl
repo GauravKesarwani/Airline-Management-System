@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://helperClasses" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://helperClasses" xmlns:intf="http://helperClasses" xmlns:tns1="http://beanFiles" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://helperClasses" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beanFiles"/>
+   <element name="loadReservationsForFlight">
+    <complexType>
+     <sequence>
+      <element name="flightId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loadReservationsForFlightResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="loadReservationsForFlightReturn" type="tns1:ActiveReservationsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservationDtl">
+    <complexType>
+     <sequence>
+      <element name="customerId" type="xsd:int"/>
+      <element maxOccurs="unbounded" name="reservationDtlId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservationDtlResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="cancelReservationDtlReturn" type="tns1:ActiveReservationsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createNewReservations">
+    <complexType>
+     <sequence>
+      <element name="reservation" type="tns1:ReservationBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_ReservationDetailBean">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ReservationDetailBean"/>
+    </sequence>
+   </complexType>
+   <element name="createNewReservationsResponse">
+    <complexType>
+     <sequence>
+      <element name="createNewReservationsReturn" type="tns1:ReservationBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loadReservationsForCustomer">
+    <complexType>
+     <sequence>
+      <element name="customerId" type="xsd:int"/>
+      <element name="status" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loadReservationsForCustomerResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="loadReservationsForCustomerReturn" type="tns1:ActiveReservationsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservation">
+    <complexType>
+     <sequence>
+      <element name="customerId" type="xsd:int"/>
+      <element name="reservationId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelReservationResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="cancelReservationReturn" type="tns1:ActiveReservationsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beanFiles" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://helperClasses"/>
+   <complexType name="ActiveReservationsBean">
+    <sequence>
+     <element name="boardingStatus" nillable="true" type="xsd:string"/>
+     <element name="dateOfJourney" nillable="true" type="xsd:string"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="flightId" type="xsd:int"/>
+     <element name="flightNo" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="price" type="xsd:double"/>
+     <element name="reservationDtlId" type="xsd:int"/>
+     <element name="reservationId" type="xsd:int"/>
+     <element name="source" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PersonBean">
+    <sequence>
+     <element name="address" nillable="true" type="xsd:string"/>
+     <element name="city" nillable="true" type="xsd:string"/>
+     <element name="contact_no" nillable="true" type="xsd:string"/>
+     <element name="created_by" nillable="true" type="xsd:string"/>
+     <element name="creation_date" nillable="true" type="xsd:dateTime"/>
+     <element name="date_of_birth" nillable="true" type="xsd:dateTime"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="employee_id" nillable="true" type="xsd:string"/>
+     <element name="end_date" nillable="true" type="xsd:dateTime"/>
+     <element name="first_name" nillable="true" type="xsd:string"/>
+     <element name="gender" nillable="true" type="xsd:string"/>
+     <element name="hire_date" nillable="true" type="xsd:dateTime"/>
+     <element name="id_no" nillable="true" type="xsd:string"/>
+     <element name="id_type" nillable="true" type="xsd:string"/>
+     <element name="last_name" nillable="true" type="xsd:string"/>
+     <element name="last_updated" nillable="true" type="xsd:dateTime"/>
+     <element name="last_updated_by" nillable="true" type="xsd:string"/>
+     <element name="middle_initial" nillable="true" type="xsd:string"/>
+     <element name="passWrd" nillable="true" type="xsd:string"/>
+     <element name="person_id" type="xsd:int"/>
+     <element name="position" nillable="true" type="xsd:string"/>
+     <element name="state" nillable="true" type="xsd:string"/>
+     <element name="username" nillable="true" type="xsd:string"/>
+     <element name="work_description" nillable="true" type="xsd:string"/>
+     <element name="zipcode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReservationDetailBean">
+    <sequence>
+     <element name="boardingStatus" nillable="true" type="xsd:string"/>
+     <element name="createdBy" nillable="true" type="xsd:string"/>
+     <element name="creationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="dateOfJourney" nillable="true" type="xsd:dateTime"/>
+     <element name="flightId" nillable="true" type="xsd:string"/>
+     <element name="lastUpdated" nillable="true" type="xsd:string"/>
+     <element name="lastUpdatedAt" nillable="true" type="xsd:dateTime"/>
+     <element name="price" type="xsd:double"/>
+     <element name="reservationDtlId" type="xsd:int"/>
+     <element name="reservationId" type="xsd:int"/>
+     <element name="seatNo" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="tax" type="xsd:double"/>
+     <element name="travelClass" nillable="true" type="xsd:string"/>
+     <element name="traveller" nillable="true" type="tns1:PersonBean"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReservationBean">
+    <sequence>
+     <element name="createdBy" nillable="true" type="xsd:string"/>
+     <element name="creationDate" nillable="true" type="xsd:dateTime"/>
+     <element name="customerId" type="xsd:int"/>
+     <element name="lastUpdated" nillable="true" type="xsd:string"/>
+     <element name="lastUpdatedAt" nillable="true" type="xsd:dateTime"/>
+     <element name="reservationDtls" nillable="true" type="impl:ArrayOf_tns1_ReservationDetailBean"/>
+     <element name="reservationId" type="xsd:int"/>
+     <element name="status" nillable="true" type="xsd:string"/>
+     <element name="typeOfJourney" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createNewReservationsResponse">
+
+      <wsdl:part element="impl:createNewReservationsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationDtlRequest">
+
+      <wsdl:part element="impl:cancelReservationDtl" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForCustomerRequest">
+
+      <wsdl:part element="impl:loadReservationsForCustomer" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationResponse">
+
+      <wsdl:part element="impl:cancelReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationRequest">
+
+      <wsdl:part element="impl:cancelReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForCustomerResponse">
+
+      <wsdl:part element="impl:loadReservationsForCustomerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelReservationDtlResponse">
+
+      <wsdl:part element="impl:cancelReservationDtlResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForFlightResponse">
+
+      <wsdl:part element="impl:loadReservationsForFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loadReservationsForFlightRequest">
+
+      <wsdl:part element="impl:loadReservationsForFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createNewReservationsRequest">
+
+      <wsdl:part element="impl:createNewReservations" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ReservationHelper">
+
+      <wsdl:operation name="loadReservationsForFlight">
+
+         <wsdl:input message="impl:loadReservationsForFlightRequest" name="loadReservationsForFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loadReservationsForFlightResponse" name="loadReservationsForFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservationDtl">
+
+         <wsdl:input message="impl:cancelReservationDtlRequest" name="cancelReservationDtlRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelReservationDtlResponse" name="cancelReservationDtlResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createNewReservations">
+
+         <wsdl:input message="impl:createNewReservationsRequest" name="createNewReservationsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createNewReservationsResponse" name="createNewReservationsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loadReservationsForCustomer">
+
+         <wsdl:input message="impl:loadReservationsForCustomerRequest" name="loadReservationsForCustomerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loadReservationsForCustomerResponse" name="loadReservationsForCustomerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservation">
+
+         <wsdl:input message="impl:cancelReservationRequest" name="cancelReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelReservationResponse" name="cancelReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ReservationHelperSoapBinding" type="impl:ReservationHelper">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="loadReservationsForFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loadReservationsForFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loadReservationsForFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservationDtl">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelReservationDtlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelReservationDtlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createNewReservations">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createNewReservationsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createNewReservationsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="loadReservationsForCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loadReservationsForCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loadReservationsForCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ReservationHelperService">
+
+      <wsdl:port binding="impl:ReservationHelperSoapBinding" name="ReservationHelper">
+
+         <wsdlsoap:address location="http://localhost:8080/AirlineMgmtSystemServer/services/ReservationHelper"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
